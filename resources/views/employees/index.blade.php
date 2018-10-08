@@ -14,6 +14,11 @@
                         </div>
                     @endif
 
+                    <form action="{{url('employees/create')}}">
+                      @csrf
+                      <button class="btn btn-warning" type="submit">Create New +</button>
+                    </form>
+
                     <table class="table table-striped">
                       <thead>
                         <tr>
