@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace miniCRM\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -81,7 +81,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        $company = \App\Company::find($id);
+        $company = \miniCRM\Company::find($id);
         $company->delete();
         return redirect('companies')->with('success','Company has been  deleted');
     }

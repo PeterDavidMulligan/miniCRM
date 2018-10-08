@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace miniCRM;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace miniCRM\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -81,7 +81,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        $employee = \App\Employee::find($id);
+        $employee = \miniCRM\Employee::find($id);
         $employee->delete();
         return redirect('employees')->with('success','Employee has been  deleted');
     }
