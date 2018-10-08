@@ -58,7 +58,8 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = \miniCRM\Company::find($id);
+        return view('companies/edit', ['company' => $company]);
     }
 
     /**

@@ -26,9 +26,9 @@ Route::get('/home', function() {
 });
 
 Route::get('/employees', 'EmployeeController@index');
-Route::get('/employees/edit/{id}', 'EmployeeController@edit');
+Route::put('/employees/{id}/edit', 'EmployeeController@edit');
 Route::delete('/employees/{id}', 'EmployeeController@destroy');
 
 Route::get('/companies', 'CompanyController@index');
-Route::get('/companies/edit/{id}', 'CompanyController@edit');
+Route::put('/companies/{id}/edit', 'CompanyController@edit');
 Route::delete('/companies/{id}', 'CompanyController@destroy');

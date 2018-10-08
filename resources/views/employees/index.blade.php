@@ -26,6 +26,7 @@
                           <th colspan="2">Action</th>
                         </tr>
                       </thead>
+
                       <tbody>
                         @foreach($employees as $employee)
                         <tr>
@@ -35,7 +36,14 @@
                           <td>{{ $employee->company }}</td>
                           <td>{{ $employee->email }}</td>
                           <td>{{ $employee->phone }}</td>
-                          <td><a href="{{action('EmployeeController@edit', $employee->id)}}" class="btn btn-warning">Edit</a></td>
+
+                          <td>
+                            <form action="{{action('EmployeeController@edit', $employee->id)}}" method="post">
+                              @csrf
+                              <input name="_method" type="hidden" value="put">
+                              <button class="btn btn-warning" type="submit">Edit</button>
+                            </form>
+                          </td>
                           <td>
                           <form action="{{action('EmployeeController@destroy', $employee->id)}}" method="post">
                             @csrf
@@ -47,6 +55,7 @@
                         @endforeach
                       </tbody>
                     </table>
+
                     <ul class="pagination pagination-lg justify-content-center">
                     {{ $employees->links() }}
                     </ul>

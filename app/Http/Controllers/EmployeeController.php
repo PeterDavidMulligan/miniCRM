@@ -58,7 +58,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = \miniCRM\Employee::find($id);
+        return view('employees/edit', ['employee' => $employee]);
     }
 
     /**
