@@ -21,3 +21,17 @@ Route::get('/home', function() {
   }
   return view('auth/login');
 });
+
+Route::get('/employees', function() {
+  if(Auth::user()) {
+    return view('employees/index');
+  }
+  return view('auth/login');
+});
+
+Route::get('/companies', function() {
+  if(Auth::user()) {
+    return view('companies/index');
+  }
+  return view('auth/login');
+});
