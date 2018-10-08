@@ -37,12 +37,12 @@
                           <td>
                           <form action="{{action('CompanyController@destroy', $company->id)}}" method="post">
                             @csrf
-                            <input name="_method" type="hidden" value="DELETE">
+                            <input name="_method" type="hidden" value="delete">
                             <button class="btn btn-danger" type="submit">Delete</button>
                           </form>
                           </td>
                         </tr>
-                      @endforeach
+                        @endforeach
                     </tbody>
                   </table>
                   <ul class="pagination pagination-lg justify-content-center">

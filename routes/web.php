@@ -12,7 +12,10 @@
 Auth::routes();
 
 Route::get('/', function() {
-  return view('welcome');
+  if(Auth::user()) {
+    return view('home');
+  }
+  return view('auth/login');
 });
 
 Route::get('/home', function() {
@@ -23,9 +26,9 @@ Route::get('/home', function() {
 });
 
 Route::get('/employees', 'EmployeeController@index');
-Route::get('/employees/edit', 'EmployeeController@edit');
-Route::get('/employees/destroy', 'EmployeeController@destroy');
+Route::get('/employees/edit/{id}', 'EmployeeController@edit');
+Route::delete('/employees/{id}', 'EmployeeController@destroy');
 
 Route::get('/companies', 'CompanyController@index');
-Route::get('/companies/edit', 'CompanyController@edit');
-Route::get('/companies/destroy', 'CompanyController@destroy');
+Route::get('/companies/edit/{id}', 'CompanyController@edit');
+Route::delete('/companies/{id}', 'CompanyController@destroy');

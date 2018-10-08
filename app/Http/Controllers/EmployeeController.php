@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -13,7 +14,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = DB::table('employees')->paginate(10);
+        return view('employees.index', ['employees' => $employees]);
     }
 
     /**
@@ -79,6 +81,8 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $employee = \App\Employee::find($id);
+        $employee->delete();
+        return redirect('employees')->with('success','Employee has been  deleted');
     }
 }
