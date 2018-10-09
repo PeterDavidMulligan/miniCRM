@@ -12,7 +12,7 @@ class EmployeesSeeder extends Seeder
      public function run()
      {
          $faker = Faker\Factory::create();
-         $amount = 50;
+         $amount = 27;
          for ($i = 0; $i < $amount; $i++) {
              DB::table('employees')->insert([
                  'first_name' => $faker->firstName,

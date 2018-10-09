@@ -13,7 +13,7 @@ class CompaniesSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        $amount = 50;
+        $amount = 12;
 
         for ($i = 0; $i < $amount; $i++) {
             DB::table('companies')->insert([
