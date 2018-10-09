@@ -2,8 +2,12 @@
 
 namespace miniCRM\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Input;
+use miniCRM\Http\Requests\CompanyRequest;
+use Carbon\Carbon;
 
 class CompanyController extends Controller
 {
@@ -34,29 +38,31 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
-        $validatedData = $request->validate([
-          'name' => 'required|unique',
-          'email' => 'required|unique',
-          'logo' => 'image|dimensions:max_width=100,max_height=100',
-          'website' => 'unique'
-        ]);
-
         $company = new \miniCRM\Company;
-        $company->name=$request->get('name');
-        $company->email=$request->get('email');
-        $company->website=$request->get('website');
 
-        $logo = $request->get('logo');
-        Storage::disk('uploads')->put($company->name, $logo);
-
+        $company->name=$request->input('name');
+        $company->email=$request->input('email') !== null ? $request->input('email') : "";
+        $company->website=$request->input('website') !== null ? $request->input('website') : "";
         $company->created_at=Carbon::now();
         $company->updated_at=Carbon::now();
 
+        $filename = ""; //assign here to avoid trying to insert null
+        $logo = Input::file('logo');
+        if($logo !== null) {
+            $extension = "." . $logo->getClientOriginalExtension();
+            //chop the file extension from the filename, append _time
+            //to avoid naming conflicts, append the extension back on
+            $filename = chop($logo->getClientOriginalName(), $extension)
+              . "_" . time() . $extension;
+            $request->file('logo')->move(public_path('logos'), $filename);
+        }
+        $company->logo = $filename;
+
         $company->save();
 
-        return redirect('companies')->with('success', 'Information has been added');
+        return redirect('/companies')->with('success', 'Information has been added');
     }
 
     /**
@@ -89,7 +95,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompanyRequest $request, $id)
     {
         //
     }

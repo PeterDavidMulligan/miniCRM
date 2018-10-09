@@ -13,32 +13,17 @@
                       {{ session('status') }}
                   </div>
               @endif
-
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Logo</th>
-                    <th>Website</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td><input type="text" name="name" class="form-control"></td>
-                    <td><input type="text" name="email" class="form-control"></td>
-                    <td><input type="file" name="logo"/></td>
-                    <td><input type="text" name="website" class="form-control"></td>
-                  </tr>
-                </tbody>
-              </table>
-
               <div class="row justify-content-center">
-                <form action="{{action('CompanyController@store')}}" method="post">
-                  @csrf
-                  <button class="btn btn-warning" type="submit">Create</button>
-                </form>
+                  <form enctype="multipart/form-data" name ="createCompanyForm" action="{{url('/companies/create')}}" method="post">
+                      <label class="row justify-content-center">Name</label><input type="text" name="name" class="form-control"/><br>
+                      <label class="row justify-content-center">Email</label><input type="email" name="email" class="form-control"/><br>
+                      <label class="row justify-content-center">Logo</label><input type="file" name="logo" class="form-control"/><br>
+                      <label class="row justify-content-center">Website</label><input type="text" name="website" class="form-control"/><br>
+                      <div class="row justify-content-center">
+                          <button name="submit" class="btn btn-warning" type="submit" value="Submit">Create</button>
+                      </div>
+                      <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                  </form>
               </div>
               @if (count($errors) > 0)
               <div class = "alert alert-danger">

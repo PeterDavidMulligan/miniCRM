@@ -30,14 +30,21 @@
                           <th colspan="2">Action</th>
                         </tr>
                       </thead>
-
+                      {{ base_path()}}
                       <tbody>
                         @foreach($companies as $company)
                         <tr>
                           <td>{{ $company->id }}</td>
                           <td>{{ $company->name }}</td>
                           <td>{{ $company->email }}</td>
-                          <td>{{ Html::image($company->logo) }}</td>
+
+                          <!-- Hack to make seeded image urls work -->
+                          @<?php if (strpos($company->logo, 'lorem') !== false): ?>
+                            <td>{{ Html::image($company->logo) }}</td>
+                          <?php else: ?>
+                            <td>{{ Html::image( URL::to('/') . '/logos/' . $company->logo) }}</td>
+                          <?php endif; ?>
+
                           <td><a href="{{url($company->website)}}">{{$company->website}}</a></td>
                           <td>
                             <form action="{{action('CompanyController@edit', $company->id)}}" method="post">

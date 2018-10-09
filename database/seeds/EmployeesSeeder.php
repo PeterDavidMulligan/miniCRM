@@ -13,14 +13,11 @@ class EmployeesSeeder extends Seeder
      {
          $faker = Faker\Factory::create();
          $amount = 50;
-
-         $companies = App\Company::all()->pluck('id')->toArray();
-
          for ($i = 0; $i < $amount; $i++) {
              DB::table('employees')->insert([
                  'first_name' => $faker->firstName,
                  'last_name' => $faker->lastName,
-                 'company' => $faker->randomElement($companies),
+                 'company' => DB::table('companies')->inRandomOrder()->first()->id,
                  'email' => $faker->unique()->safeEmail,
                  'phone' => $faker->unique()->phoneNumber
              ]);

@@ -18,7 +18,7 @@ class CompaniesSeeder extends Seeder
         for ($i = 0; $i < $amount; $i++) {
             DB::table('companies')->insert([
                 'name' => $faker->company,
-                'email' => $faker->unique()->safeEmail,
+                'email' => $faker->safeEmail,
                 'logo' => $faker->imageUrl($width = 100, $height = 100),
                 'website' => $faker->url
             ]);

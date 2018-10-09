@@ -134,16 +134,11 @@ return [
             'unique' => 'A company with that name already exists.'
         ],
         'email' => [
-            'required'  => 'An email address is required.',
-            'email'  => 'The email field is formatted incorrectly.',
-            'unique'  => 'A company with that email address already exists.'
+            'email'  => 'The email field is formatted incorrectly.'
         ],
         'logo' => [
             'logo.image' => 'The file uploaded must be an image.',
             'logo.dimensions' => 'A company logo must be below 100 x 100 pixels.'
-        ],
-        'website' => [
-            'unique' => 'A company with this website already exists.'
         ]
     ],
 
