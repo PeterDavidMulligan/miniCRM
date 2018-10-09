@@ -16,7 +16,7 @@
 
                     <form action="{{url('companies/create')}}">
                       @csrf
-                      <button class="btn btn-warning" type="submit">Create New +</button>
+                      <button class="btn btn-warning" type="submit">Create New</button>
                     </form>
 
                     <table class="table table-striped">
@@ -30,7 +30,7 @@
                           <th colspan="2">Action</th>
                         </tr>
                       </thead>
-                      {{ base_path()}}
+
                       <tbody>
                         @foreach($companies as $company)
                         <tr>
@@ -39,7 +39,7 @@
                           <td>{{ $company->email }}</td>
 
                           <!-- Hack to make seeded image urls work -->
-                          @<?php if (strpos($company->logo, 'lorem') !== false): ?>
+                          <?php if (strpos($company->logo, 'lorem') !== false): ?>
                             <td>{{ Html::image($company->logo) }}</td>
                           <?php else: ?>
                             <td>{{ Html::image( URL::to('/') . '/logos/' . $company->logo) }}</td>
