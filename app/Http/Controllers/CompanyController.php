@@ -97,7 +97,26 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, $id)
     {
-        //
+        $company = \miniCRM\Company::find($id);
+        $oldCompany = $company;
+        $company->name=$request->get('name');
+        $company->email=$request->get('email');
+        $company->website=$request->get('website');
+
+        $filename = ""; //assign here to avoid trying to insert null
+        $logo = Input::file('logo');
+        if($logo !== null) {
+            $extension = "." . $logo->getClientOriginalExtension();
+            //chop the file extension from the filename, append _time
+            //to avoid naming conflicts, append the extension back on
+            $filename = chop($logo->getClientOriginalName(), $extension)
+              . "_" . time() . $extension;
+            $request->file('logo')->move(public_path('logos'), $filename);
+        }
+        $company->logo = $filename;
+
+        $company->save();
+        return redirect('companies')->with('success', 'Information has been edited');
     }
 
     /**
