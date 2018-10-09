@@ -26,10 +26,10 @@
 
                 <tbody>
                   <tr>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="file"/></td>
-                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" name="name" class="form-control"></td>
+                    <td><input type="text" name="email" class="form-control"></td>
+                    <td><input type="file" name="logo"/></td>
+                    <td><input type="text" name="website" class="form-control"></td>
                   </tr>
                 </tbody>
               </table>
@@ -39,6 +39,16 @@
                   @csrf
                   <button class="btn btn-warning" type="submit">Create</button>
                 </form>
+              </div>
+              @if (count($errors) > 0)
+              <div class = "alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+              </div>
+              @endif
               </div>
         </div>
       </div>

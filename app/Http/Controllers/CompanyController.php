@@ -36,7 +36,27 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        return view('companies/create');
+        $validatedData = $request->validate([
+          'name' => 'required|unique',
+          'email' => 'required|unique',
+          'logo' => 'image|dimensions:max_width=100,max_height=100',
+          'website' => 'unique'
+        ]);
+
+        $company = new \miniCRM\Company;
+        $company->name=$request->get('name');
+        $company->email=$request->get('email');
+        $company->website=$request->get('website');
+
+        $logo = $request->get('logo');
+        Storage::disk('uploads')->put($company->name, $logo);
+
+        $company->created_at=Carbon::now();
+        $company->updated_at=Carbon::now();
+
+        $company->save();
+
+        return redirect('companies')->with('success', 'Information has been added');
     }
 
     /**
