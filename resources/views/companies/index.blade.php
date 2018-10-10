@@ -21,6 +21,7 @@
                     @endif
                   </div>
 
+
                   <div class="container" name="bodyContainer">
                     <form action="{{url('companies/create')}}">
                       @csrf
