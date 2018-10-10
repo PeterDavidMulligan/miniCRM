@@ -4,7 +4,9 @@ namespace miniCRM\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Rule;
+use miniCRM\Company;
+use miniCRM\Rules\IgnoreUniqueOnSelf;
+use Illuminate\Contracts\Validation\Rule;
 
 class CompanyRequest extends FormRequest
 {
@@ -26,7 +28,7 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-          Rule::unique('companies')->ignore($company->id)
+          'name' => 'sometimes|required|unique:companies',
           'email' => 'nullable|email',
           'logo' => 'nullable|image|dimensions:max_width=100,max_height=100',
           'website' => 'nullable'

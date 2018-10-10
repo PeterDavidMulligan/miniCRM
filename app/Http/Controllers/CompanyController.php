@@ -4,10 +4,12 @@ namespace miniCRM\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use miniCRM\Http\Requests\CompanyRequest;
 use Carbon\Carbon;
+use miniCRM\Company;
+use Lang;
 
 class CompanyController extends Controller
 {
@@ -45,6 +47,7 @@ class CompanyController extends Controller
         $company->name=$request->input('name');
         $company->email=$request->input('email') !== null ? $request->input('email') : "";
         $company->website=$request->input('website') !== null ? $request->input('website') : "";
+
         $now=Carbon::now();
         $company->created_at=$now;
         $company->updated_at=$now;
@@ -56,12 +59,12 @@ class CompanyController extends Controller
             //to avoid naming conflicts, append the extension back on
             $filename = chop($logo->getClientOriginalName(), $extension)
               . "_" . time() . $extension;
+              //Savethe file in /public/logos
             $request->file('logo')->move(public_path('logos'), $filename);
         }
-
         $company->save();
 
-        return redirect('/companies')->with('success', 'Information has been added');
+        return redirect('/companies')->withErrors('success', $company->name . Lang::get('ui.created'));
     }
 
     /**
@@ -72,7 +75,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        return Company::find($id);
     }
 
     /**
@@ -94,15 +97,11 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompanyRequest $request, $id)
     {
         $company = \miniCRM\Company::find($id);
-        $oldCompany = $company;
-        $company->name=$request->get('name');
-        $company->email=$request->get('email');
-        $company->website=$request->get('website');
+        $filename=$company->logo;
 
-        $filename = ""; //assign here to avoid trying to insert null
         $logo = Input::file('logo');
         if($logo !== null) {
             $extension = "." . $logo->getClientOriginalExtension();
@@ -112,14 +111,16 @@ class CompanyController extends Controller
               . "_" . time() . $extension;
               //Save the image in public/logos and add the path to the table
             $request->file('logo')->move(public_path('logos'), $filename);
-            $company->logo = $filename;
         }
 
-        if($company !== $company)
-        {
-          $company->save();
-        }
-        return redirect('companies')->with('success', 'Information has been edited');
+        $company->update([
+          $company->email=$request->get('email'),
+          $company->logo = $filename,
+          $company->website=$request->get('website'),
+        ]);
+        $company->save();
+
+        return redirect('companies')->withErrors('success', $company->name . Lang::get('ui.edited'));
     }
 
     /**
@@ -132,6 +133,7 @@ class CompanyController extends Controller
     {
         $company = \miniCRM\Company::find($id);
         $company->delete();
-        return redirect('companies')->with('success','Company has been  deleted');
+
+        return redirect('companies')->withErrors('success', $company->name . Lang::get('ui.deleted'));
     }
 }
