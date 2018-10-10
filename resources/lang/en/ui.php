@@ -1,28 +1,62 @@
 <?php
 return [
-  'name' => 'Name',
-  'email' => 'Email',
-  'logo' => 'Logo',
-  'website' => 'Website',
-  'edit_company' => 'Edit Company',
-  'edit_employee' => 'Edit Employee',
+  //A
+  'action' => 'Action',
+
+
+  //C
+  'create' => 'Create',
   'create_company' => 'Create Company',
   'create_employee' => 'Create Employee',
-  'edit' => 'Edit',
-  'create' => 'Create',
-  'delete' => 'Delete',
-  'first_name' => 'First Name',
-  'last_name' => 'Last Name',
-  'phone' => 'Phone',
   'created' => ' has been created.',
-  'edited' => 'has been edited.',
-  'deleted' => ' has been deleted.',
-  'id' => 'ID',
-  'action' => 'Action',
   'company' => 'Company',
   'companies' => 'Companies',
+  'company_id' => 'Company ID',
+
+  //D
+  'delete' => 'Delete',
+  'deleted' => ' has been deleted.',
+
+  //E
+  'email' => 'Email',
+  'edit_company' => 'Edit Company',
+  'edit_employee' => 'Edit Employee',
+  'edit' => 'Edit',
   'employee' => 'Employee',
   'employees' => 'Employees',
+  'edited' => 'has been edited.',
+
+  //F
+  'first_name' => 'First Name',
+
+
+  //I
+  'id' => 'ID',
+
+
+  //L
+  'last_name' => 'Last Name',
+  'logo' => 'Logo',
+
+
+  //N
+  'name' => 'Name',
+
+
+  //P
+  'phone' => 'Phone',
+
+
+  //W
+  'website' => 'Website',
+
+
+
+
+
+
+
+
 ];
 
  ?>

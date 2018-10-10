@@ -22,12 +22,12 @@
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th>ID</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Company ID</th>
-                          <th>Email</th>
-                          <th>Phone Number</th>
+                          <th>@lang('ui.id')</th>
+                          <th>@lang('ui.first_name')</th>
+                          <th>@lang('ui.last_name')</th>
+                          <th>@lang('ui.company_id')</th>
+                          <th>@lang('ui.email')</th>
+                          <th>@lang('ui.phone')</th>
                           <th colspan="2">Action</th>
                         </tr>
                       </thead>
