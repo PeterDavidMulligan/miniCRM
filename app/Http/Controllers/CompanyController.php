@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
-use miniCRM\Http\Requests\CompanyRequest;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class CompanyController extends Controller
@@ -45,10 +45,10 @@ class CompanyController extends Controller
         $company->name=$request->input('name');
         $company->email=$request->input('email') !== null ? $request->input('email') : "";
         $company->website=$request->input('website') !== null ? $request->input('website') : "";
-        $company->created_at=Carbon::now();
-        $company->updated_at=Carbon::now();
+        $now=Carbon::now();
+        $company->created_at=$now;
+        $company->updated_at=$now;
 
-        $filename = ""; //assign here to avoid trying to insert null
         $logo = Input::file('logo');
         if($logo !== null) {
             $extension = "." . $logo->getClientOriginalExtension();
@@ -58,7 +58,6 @@ class CompanyController extends Controller
               . "_" . time() . $extension;
             $request->file('logo')->move(public_path('logos'), $filename);
         }
-        $company->logo = $filename;
 
         $company->save();
 
@@ -95,7 +94,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CompanyRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $company = \miniCRM\Company::find($id);
         $oldCompany = $company;
@@ -111,11 +110,15 @@ class CompanyController extends Controller
             //to avoid naming conflicts, append the extension back on
             $filename = chop($logo->getClientOriginalName(), $extension)
               . "_" . time() . $extension;
+              //Save the image in public/logos and add the path to the table
             $request->file('logo')->move(public_path('logos'), $filename);
+            $company->logo = $filename;
         }
-        $company->logo = $filename;
 
-        $company->save();
+        if($company !== $company)
+        {
+          $company->save();
+        }
         return redirect('companies')->with('success', 'Information has been edited');
     }
 

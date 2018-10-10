@@ -2,62 +2,54 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-12">
+  <div class="d-flex flex-container justify-content-center">
+    <div class="col-md-12">
 
-        <div class="card">
-          <div class="card-header">Edit Company</div>
-          <div class="card-body">
+      <div class="card">
+        <div class="card-header">@lang('ui.edit_company')</div>
+        <div class="card-body">
 
-              @if (session('status'))
-                  <div class="alert alert-success" role="alert">
-                      {{ session('status') }}
-                  </div>
-              @endif
-
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Logo</th>
-                    <th>Website</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td>{{$company->name}}</td>
-                    <td>{{$company->email}}</td>
-
-                    <!-- Hack to make seeded image urls work -->
-                    <?php if (strpos($company->logo, 'lorem') !== false): ?>
-                      <td>{{ Html::image($company->logo) }}</td>
-                    <?php else: ?>
-                      <td>{{ Html::image( URL::to('/') . '/logos/' . $company->logo) }}</td>
-                    <?php endif; ?>
-
-                    <td>{{$company->website}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="row">
-                <form enctype="multipart/form-data" name ="editCompanyForm" action="{{action('CompanyController@edit', $company->id)}}" method="post">
-                    <input type="text" class="form-control col-lg-2" name="name" value="{{$company->name}}">
-                    <input type="text" class="form-control col-lg-2" name="email" value="{{$company->email}}">
-                    <input type="file" class="form-control col-lg-2" name="logo"/>
-                    <input type="text" class="form-control col-lg-6" name="website" value="{{$company->website}}">
-                    <br><br>
-                    @csrf
-                    <input name="_method" type="hidden" value="put">
-                    <button class="btn btn-warning" type="submit">Edit</button>
-                </form>
-              </div>
+        @if (session('status'))
+        <div class="alert alert-success" role="alert">
+        {{ session('status') }}
         </div>
+        @endif
+
+
+        @if (count($errors) > 0)
+        <div class = "alert alert-danger">
+          <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+          </ul>
+        </div>
+        @endif
+
+
+        <div class="d-flex flex-container  justify-content-center">
+          <div class="d-flex flex-row justify-content-center">
+              <form enctype="multipart/form-data" name ="editCompanyForm" action="{{action('CompanyController@edit', $company->id)}}" method="post">
+                  @lang('ui.name')<br>
+                  <input type="text" class="form-control" name="name" value="{{$company->name}}">
+                  @lang('ui.email')<br>
+                  <input type="text" class="form-control" name="email" value="{{$company->email}}">
+                  @lang('ui.logo')<br>
+                  <input type="file" class="form-control" name="logo"/>
+                  @lang('ui.website')<br>
+                  <input type="text" class="form-control" name="website" value="{{$company->website}}">
+                  <br><br>
+                  @csrf
+                  <input name="_method" type="hidden" value="put">
+                  <button class="btn btn-warning" type="submit">@lang('ui.edit')</button>
+              </form>
+          </div>
+        </div>
+
       </div>
     </div>
 
+    </div>
   </div>
-</div>
 </div>
 @endsection
