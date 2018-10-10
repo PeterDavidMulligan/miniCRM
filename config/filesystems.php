@@ -50,16 +50,16 @@ return [
 
         'disks' => [
             'public' => [
-               'driver' => 'local',
-               'root'   => public_path(),
-               'url' => env('APP_URL').'/public',
-               'visibility' => 'public'
+            'driver' => 'local',
+            'root'   => storage_path(),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public'
             ]
         ],
 
         'logos' => [
-        'driver' => 'local',
-        'root'   => public_path() . '/logos',
+          'driver' => 'local',
+          'root'   => public_path() . '/logos',
         ],
 
         's3' => [

@@ -61,6 +61,7 @@ class CompanyController extends Controller
               . "_" . time() . $extension;
               //Savethe file in /public/logos
             $request->file('logo')->move(public_path('logos'), $filename);
+            $company->logo=$filename;
         }
         $company->save();
 
