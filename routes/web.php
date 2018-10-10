@@ -42,5 +42,8 @@ Route::put('/companies/{id}/edit', 'CompanyController@update');
 Route::get('/companies/create', 'CompanyController@create');
 Route::post('/companies/create', 'CompanyController@store');
 
+Route::get('/companies/{id}', 'CompanyController@show');
+Route::get('/employees/{id}', 'EmployeeController@show');
+
 Route::delete('/companies/{id}', 'CompanyController@destroy');
 Route::delete('/employees/{id}', 'EmployeeController@destroy');
