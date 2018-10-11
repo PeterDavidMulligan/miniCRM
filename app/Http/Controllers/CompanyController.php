@@ -44,7 +44,7 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
-        $company = new \miniCRM\Company;
+        $company = new Company;
 
         $company->name=$request->input('name');
         $company->email=$request->input('email') !== null ? $request->input('email') : "";
@@ -89,7 +89,7 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        $company = \miniCRM\Company::find($id);
+        $company = Company::find($id);
         return view('companies/edit', ['company' => $company]);
     }
 
@@ -102,7 +102,7 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, $id)
     {
-        $company = \miniCRM\Company::find($id);
+        $company = Company::find($id);
         $filename=$company->logo;
 
         $logo = Input::file('logo');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use miniCRM\Http\Requests\EmployeeRequest;
 use miniCRM\Company;
+use miniCRM\Employee;
 use Carbon\Carbon;
 use Lang;
 
@@ -76,7 +77,7 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $employee = \miniCRM\Employee::find($id);
+        $employee = Employee::find($id);
         return view('employees/edit', ['employee' => $employee]);
     }
 
@@ -89,12 +90,15 @@ class EmployeeController extends Controller
      */
     public function update(EmployeeRequest $request, $id)
     {
-      $employee = new \miniCRM\Employee;
-
-      $employee->company=$request->input('company');
-      $employee->email=$request->input('email') !== null ? $request->input('email') : "";
-      $employee->phone=$request->input('phone') !== null ? $request->input('phone') : "";
-      $employee->updated_at=Carbon::now();
+      $employee = Employee::find($id);
+      $employee->update([
+        $employee->first_name=$request->input('first_name'),
+        $employee->last_name=$request->input('last_name'),
+        $employee->company=$request->input('company'),
+        $employee->email=$request->input('email'),
+        $employee->phone=$request->input('phone'),
+        $employee->updated_at=Carbon::now(),
+      ]);
 
       $employee->save();
 
@@ -109,7 +113,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        $employee = \miniCRM\Employee::find($id);
+        $employee = Employee::find($id);
         $employee->delete();
         return redirect('employees')->withErrors(Lang::get('ui.employee') . Lang::get('ui.deleted'));
 
