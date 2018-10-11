@@ -1,6 +1,6 @@
 # miniCRM
 
-##Installation
+## Installation
 
 - Create a mysql database called 'miniCRM' on port 3306.
 
@@ -12,36 +12,36 @@
 
 Goto [port 8000](http://127.0.0.1:8000) on your local host and you should be greeted with the home screen.
 
-##Description
+## Description
 
 miniCRM is a tiny Customer Relationship Management system that provides basic functionality to manage
 a one-to-many relationship between companies and employees.
 
-##Features
+## Features
  - Basic CRUD functionality
  - Faker database seeding
  - Fully integrated for localization
  - Request Validation
  - Paginated results
 
-##Usage
+## Usage
 
 Using the command prompt in the root folder, use the command 'php artisan migrate' to instantiate the database
 with the user, or 'php artisan migrate --seed' to populate the database with random companies and employees.
 
-#Email admin@admin.com
-#Password password
+# Email admin@admin.com
+# Password password
 
 To view companies/employees, use '/{table}/{id}/{CRUD method}'
 
-#Example
+# Example
 '/employees/12/show'
 
-#Tables
+# Tables
 companies
 employees
 
-#Methods
+# Methods
 show
 edit
 create
