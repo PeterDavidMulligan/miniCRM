@@ -4,9 +4,9 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
+
       <div class="card">
         <div class="card-header">@lang('ui.create_company')</div>
-
           <div class="card-body">
 
             <div class="container" name="alertsContainer">
@@ -28,7 +28,7 @@
                   <label class="row justify-content-center">@lang('ui.logo')</label><input type="file" name="logo" class="form-control"/><br>
                   <label class="row justify-content-center">@lang('ui.website')</label><input type="text" name="website" class="form-control"/><br>
                   <div class="row justify-content-center">
-                    <button name="submit" class="btn btn-warning" type="submit" value="Submit">Create</button>
+                    <button name="submit" class="btn btn-warning" type="submit" value="Submit">@lang('ui.create')</button>
                   </div>
                   <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
                 </form>

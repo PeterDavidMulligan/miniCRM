@@ -4,19 +4,26 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Employees</div>
 
+            <div class="card">
+                <div class="card-header">@lang('ui.employees')</div>
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+
+                    <div class="container" name="alertsContainer">
+                      @if (count($errors) > 0)
+                      <div class = "alert alert-warning">
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                          @endforeach
+                        </ul>
+                      </div>
+                      @endif
+                    </div>
 
                     <form action="{{url('employees/create')}}">
-                      @csrf
-                      <button class="btn btn-warning" type="submit">Create New +</button>
+                      <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                      <button class="btn btn-warning" type="submit">@lang('ui.create_employee')</button>
                     </form>
 
                     <table class="table table-striped">
@@ -28,7 +35,7 @@
                           <th>@lang('ui.company_id')</th>
                           <th>@lang('ui.email')</th>
                           <th>@lang('ui.phone')</th>
-                          <th colspan="2">Action</th>
+                          <th colspan="2">@lang('ui.action')</th>
                         </tr>
                       </thead>
 
@@ -43,17 +50,17 @@
                           <td>{{ $employee->phone }}</td>
 
                           <td>
-                            <form action="{{action('EmployeeController@edit', $employee->id)}}" method="post">
-                              @csrf
+                            <form action="{{action('EmployeeController@edit', $employee->id)}}" method="put">
+                              <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
                               <input name="_method" type="hidden" value="put">
-                              <button class="btn btn-warning" type="submit">Edit</button>
+                              <button class="btn btn-warning" type="submit">@lang('ui.edit')</button>
                             </form>
                           </td>
                           <td>
                           <form action="{{action('EmployeeController@destroy', $employee->id)}}" method="post">
-                            @csrf
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                            <input name="_method" type="hidden" method="delete">
+                            <button class="btn btn-danger" type="submit">@lang('ui.delete')</button>
                           </form>
                           </td>
                         </tr>

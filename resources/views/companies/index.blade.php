@@ -4,23 +4,19 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+          @if (count($errors) > 0)
+          <div class = "alert alert-warning">
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          @endif
             <div class="card">
                 <div class="card-header">Companies</div>
 
                 <div class="card-body">
-
-                  <div class="container" name="alertsContainer">
-                    @if (count($errors) > 0)
-                    <div class = "alert alert-warning">
-                      <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                      </ul>
-                    </div>
-                    @endif
-                  </div>
-
 
                   <div class="container" name="bodyContainer">
                     <form action="{{url('companies/create')}}">
@@ -29,6 +25,7 @@
                     </form>
 
                     <table class="table table-striped">
+
                       <thead>
                         <tr>
                           <th>@lang('ui.id')</th>
@@ -64,7 +61,7 @@
                           </td>
                           <td>
                             <form action="{{action('CompanyController@destroy', $company->id)}}" method="post">
-                              @csrf
+                              <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
                               <input name="_method" type="hidden" value="delete">
                               <button class="btn btn-danger" type="submit">@lang('ui.delete')</button>
                             </form>

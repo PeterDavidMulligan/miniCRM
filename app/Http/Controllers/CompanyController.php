@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 use miniCRM\Http\Requests\CompanyRequest;
 use Carbon\Carbon;
 use miniCRM\Company;
+use miniCRM\Employee;
 use Lang;
+
 
 class CompanyController extends Controller
 {
@@ -65,7 +67,7 @@ class CompanyController extends Controller
         }
         $company->save();
 
-        return redirect('/companies')->withErrors('success', $company->name . Lang::get('ui.created'));
+        return redirect('/companies');
     }
 
     /**
@@ -121,7 +123,7 @@ class CompanyController extends Controller
         ]);
         $company->save();
 
-        return redirect('companies')->withErrors('success', $company->name . Lang::get('ui.edited'));
+        return redirect('companies');
     }
 
     /**
@@ -132,9 +134,12 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        $company = \miniCRM\Company::find($id);
+        $company = Company::find($id);
+        $dependants = Employee::where('company', $company->id)->exists();
+        if($dependants) {
+          return redirect('companies')->withErrors(Lang::get('ui.depend'));
+        }
         $company->delete();
-
-        return redirect('companies')->withErrors('success', $company->name . Lang::get('ui.deleted'));
+        return redirect('companies')->withErrors(Lang::get('ui.deleted'));
     }
 }
