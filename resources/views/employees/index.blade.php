@@ -50,16 +50,16 @@
                           <td>{{ $employee->phone }}</td>
 
                           <td>
-                            <form action="{{action('EmployeeController@edit', $employee->id)}}" method="put">
-                              <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                            <form action="{{action('EmployeeController@edit', $employee->id)}}" method="get">
+                              @csrf
                               <input name="_method" type="hidden" value="put">
                               <button class="btn btn-warning" type="submit">@lang('ui.edit')</button>
                             </form>
                           </td>
                           <td>
                           <form action="{{action('EmployeeController@destroy', $employee->id)}}" method="post">
-                            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
-                            <input name="_method" type="hidden" method="delete">
+                            @csrf
+                            <input name="_method" type="hidden" value="delete">
                             <button class="btn btn-danger" type="submit">@lang('ui.delete')</button>
                           </form>
                           </td>
