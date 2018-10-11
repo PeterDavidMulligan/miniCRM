@@ -66,8 +66,9 @@ class CompanyController extends Controller
             $company->logo=$filename;
         }
         $company->save();
-
-        return redirect('/companies');
+        $emailer = new EmailController;
+        $emailer->sendMail();
+        return redirect('companies')->withErrors(Lang::get('ui.created'));
     }
 
     /**
@@ -123,7 +124,7 @@ class CompanyController extends Controller
         ]);
         $company->save();
 
-        return redirect('companies');
+        return redirect('companies')->withErrors(Lang::get('ui.edited'));
     }
 
     /**

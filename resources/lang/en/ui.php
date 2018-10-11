@@ -31,6 +31,9 @@ return [
   'logo' => 'Logo',
   //N
   'name' => 'Name',
+  'new_comp_head' => 'A new company was created!',
+  'new_company_body' => 'You were sent this mail because you are subscribed
+    to receive email notifications whenever a new company is created.',
   //P
   'phone' => 'Phone',
   //W
