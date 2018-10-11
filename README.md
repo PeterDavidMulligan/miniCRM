@@ -19,7 +19,7 @@
 
 - In the command prompt, run 'php artisan serve' to run a local server.
 
-- Go to [port 8000](http://127.0.0.1:8000) on your local host and you should be greeted with the log in screen.
+- Go to [port 8000](http://localhost:8000) on your local host and you should be greeted with the log in screen.
   Use the following details:
   - Email : admin@admin.com
   - Password : password
