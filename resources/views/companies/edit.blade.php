@@ -22,7 +22,7 @@
           </div>
 
           <div class="d-flex flex-container  justify-content-center">
-            <div class="d-flex flex-row justify-content-center">
+            <div class="d-flex flex-row justify-content-center text-center">
                 <form enctype="multipart/form-data" name ="editCompanyForm" action="{{action('CompanyController@edit', $company->id)}}" method="post">
                     @lang('ui.name')<br>
                     <input type="text" disabled="true" class="form-control" name="name" value="{{$company->name}}">
