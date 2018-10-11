@@ -12,7 +12,7 @@
 
 - Download or clone miniCRM.
 
-- Change 'username' and 'password' in '/config/mail.php' to your own MailTrap details to receive automated emails. (Optional)
+- Change 'username' and 'password' in '/config/mail.php' to your own [MailTrap](https://mailtrap.io/) details to receive automated    emails. (Optional)
 
 - Open a command prompt in the directory you saved miniCRM into and run 'php artisan migrate --seed'.
 
