@@ -22,16 +22,20 @@
             </div>
 
               <div class="row justify-content-center">
-                <form name ="createEmployeeForm" action="{{url('/employees/create')}}" method="post">
-                  <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
-                  <input name="_method" type="hidden" value="post"/>
-                  <label class="row justify-content-center">@lang('ui.first_name')</label><input type="text" name="first_name" class="form-control"/><br>
-                  <label class="row justify-content-center">@lang('ui.last_name')</label><input type="text" name="last_name" class="form-control"/><br>
-                  <label class="row justify-content-center">@lang('ui.company_id')</label><input type="number" name="company_id"
-                    class="form-control" min="1" value="1" /><br>
-                  <label class="row justify-content-center">@lang('ui.email')</label><input type="email" name="email" class="form-control"/><br>
-                  <label class="row justify-content-center">@lang('ui.phone')</label><input type="text" name="phone" class="form-control"/><br>
+                <form name ="createEmployeeForm" action="{{url('/employees/create')}}" method="put">
+                <input name="_method" type="hidden" value="post"/>
+                  <label class="row justify-content-center">@lang('ui.first_name')</label>
+                  <input type="text" name="first_name" class="form-control"/><br>
+                  <label class="row justify-content-center">@lang('ui.last_name')</label>
+                  <input type="text" name="last_name" class="form-control"/><br>
+                  <label class="row justify-content-center">@lang('ui.company_id')
+                  </label><input type="number" name="company_id" class="form-control" min="1" value="1" /><br>
+                  <label class="row justify-content-center">@lang('ui.email')</label>
+                  <input type="email" name="email" class="form-control"/><br>
+                  <label class="row justify-content-center">@lang('ui.phone')
+                  </label><input type="text" name="phone" class="form-control"/><br>
                   <div class="row justify-content-center">
+                    @csrf
                     <button name="submit" class="btn btn-warning" type="submit" value="Submit">@lang('ui.create')</button>
                   </div>
                 </form>

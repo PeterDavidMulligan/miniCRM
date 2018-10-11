@@ -13,7 +13,7 @@ class EmployeeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::user();
     }
 
     /**
@@ -24,7 +24,13 @@ class EmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          return [
+            'first_name' => 'sometimes|required',
+            'last_name' => 'sometimes|required',
+            'company' => 'required|exists:companies,id',
+            'email' => 'nullable|email',
+            'phone' => 'nullable',
+          ];
         ];
     }
 }
