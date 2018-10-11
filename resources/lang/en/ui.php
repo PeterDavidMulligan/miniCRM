@@ -12,7 +12,7 @@ return [
   'company_id' => 'Company ID',
   //D
   'delete' => 'Delete',
-  'deleted' => 'Row has been deleted.',
+  'deleted' => ' has been deleted.',
   'depend' => 'Cannot delete companies with dependant employees.',
   //E
   'email' => 'Email',

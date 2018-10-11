@@ -54,7 +54,7 @@ class EmployeeController extends Controller
 
       $employee->save();
 
-      return redirect('employees')->withErrors(Lang::get('ui.created'));
+      return redirect('employees')->withErrors(Lang::get('ui.employee') . Lang::get('ui.created'));
     }
 
     /**
@@ -102,7 +102,7 @@ class EmployeeController extends Controller
     {
         $employee = \miniCRM\Employee::find($id);
         $employee->delete();
-        return redirect('employees')->withErrors(Lang::get('ui.deleted'));
+        return redirect('employees')->withErrors(Lang::get('ui.employee') . Lang::get('ui.deleted'));
 
     }
 }
