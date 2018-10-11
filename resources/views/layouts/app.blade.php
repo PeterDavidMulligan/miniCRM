@@ -41,7 +41,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __(Lang('ui.logout')) }}</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
@@ -50,18 +50,18 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item" href="{{ url('/home') }}" >
-                                      Home
+                                      @lang('ui.home')
                                   </a>
                                   <a class="dropdown-item" href="{{ url('/companies') }}" >
-                                      Companies
+                                      @lang('ui.companies')
                                   </a>
                                   <a class="dropdown-item" href="{{ url('/employees') }}" >
-                                      Employees
+                                      @lang('ui.employees')
                                   </a>
                                   <a class="dropdown-item" href="{{ route('logout') }}"
                                      onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
-                                      {{ __('Logout') }}
+                                      @lang('ui.logout')
                                   </a>
 
                                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

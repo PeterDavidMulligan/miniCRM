@@ -24,11 +24,14 @@ return [
   'edited' => 'has been edited.',
   //F
   'first_name' => 'First Name',
+  //H
+  'home' => 'Home',
   //I
   'id' => 'ID',
   //L
   'last_name' => 'Last Name',
   'logo' => 'Logo',
+  'logout' => 'Logout',
   //N
   'name' => 'Name',
   'new_comp_head' => 'A new company was created!',
