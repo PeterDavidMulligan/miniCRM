@@ -5,6 +5,7 @@ namespace miniCRM\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use miniCRM\Http\Requests\EmployeeRequest;
+use miniCRM\Company;
 use Carbon\Carbon;
 use Lang;
 
@@ -43,7 +44,7 @@ class EmployeeController extends Controller
 
       $employee->first_name=$request->input('first_name');
       $employee->last_name=$request->input('last_name');
-      $employee->company=DB::table('companies')->find($request->input('company_id'));
+      $employee->company=$request->input('company');
       $employee->email=$request->input('email') !== null ? $request->input('email') : "";
       $employee->phone=$request->input('phone') !== null ? $request->input('phone') : "";
 
@@ -53,7 +54,7 @@ class EmployeeController extends Controller
 
       $employee->save();
 
-      return redirect('/companies')->withErrors(Lang::get('ui.created'));
+      return redirect('employees')->withErrors(Lang::get('ui.created'));
     }
 
     /**

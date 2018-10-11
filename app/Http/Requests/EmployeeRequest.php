@@ -3,6 +3,7 @@
 namespace miniCRM\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeRequest extends FormRequest
 {
@@ -24,13 +25,11 @@ class EmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-          return [
             'first_name' => 'sometimes|required',
             'last_name' => 'sometimes|required',
             'company' => 'sometimes|required|exists:companies,id',
             'email' => 'nullable|email',
             'phone' => 'nullable',
-          ];
         ];
     }
 }
