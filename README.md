@@ -10,12 +10,14 @@
 
 - Open a command prompt in the directory you saved miniCRM into and type 'php artisan serve'.
 
-Goto [port 8000](http://127.0.0.1:8000) on your local host and you should be greeted with the home screen.
+- Goto [port 8000](http://127.0.0.1:8000) on your local host and you should be greeted with the home screen.
+
 
 ## Description
 
 miniCRM is a tiny Customer Relationship Management system that provides basic functionality to manage
 a one-to-many relationship between companies and employees.
+
 
 ## Features
  - Basic CRUD functionality
@@ -24,14 +26,15 @@ a one-to-many relationship between companies and employees.
  - Request Validation
  - Paginated results
 
+
 ## Usage
 
 Using the command prompt in the root folder, use the command 'php artisan migrate' to instantiate the database
 with the user, or 'php artisan migrate --seed' to populate the database with random companies and employees.
 
- Email admin@admin.com
+ Email : admin@admin.com
  
- Password password
+ Password : password
 
 
 
