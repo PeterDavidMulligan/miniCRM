@@ -89,7 +89,16 @@ class EmployeeController extends Controller
      */
     public function update(EmployeeRequest $request, $id)
     {
-        //
+      $employee = new \miniCRM\Employee;
+
+      $employee->company=$request->input('company');
+      $employee->email=$request->input('email') !== null ? $request->input('email') : "";
+      $employee->phone=$request->input('phone') !== null ? $request->input('phone') : "";
+      $employee->updated_at=Carbon::now();
+
+      $employee->save();
+
+      return redirect('employees')->withErrors(Lang::get('ui.employee') . Lang::get('ui.edited'));
     }
 
     /**

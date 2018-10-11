@@ -6,7 +6,7 @@
       <div class="col-md-12">
 
         <div class="card">
-          <div class="card-header">@lang('edit_employee')</div>
+          <div class="card-header">@lang('ui.edit_employee')</div>
           <div class="card-body">
 
               <div class="container" name="alertsContainer">
@@ -41,18 +41,18 @@
                   </tr>
 
                   <tr>
-                    <td><input type="text" class="form-control" value="{{$employee->first_name}}"></td>
-                    <td><input type="text" class="form-control" value="{{$employee->last_name}}"></td>
-                    <td><input type="number" step="1" min="1" value="{{$employee->company}}"></td>
-                    <td><input type="text" class="form-control" value="{{$employee->email}}"></td>
-                    <td><input type="text" class="form-control" value="{{$employee->phone}}"></td>
+                    <td><input name="first_name" type="text" class="form-control" value="{{$employee->first_name}}"></td>
+                    <td><input name="last_name" type="text" class="form-control" value="{{$employee->last_name}}"></td>
+                    <td><input name="company" type="number" step="1" min="1" default="1" value="{{$employee->company}}"></td>
+                    <td><input name="email" type="text" class="form-control" value="{{$employee->email}}"></td>
+                    <td><input name="phone" type="text" class="form-control" value="{{$employee->phone}}"></td>
                   </tr>
                 </tbody>
               </table>
               <div class="row justify-content-center">
-                <form action="{{action('EmployeeController@edit', $employee->id)}}" method="put">
+                <form action="{{action('EmployeeController@update', $employee->id)}}" method="post">
                   @csrf
-                  <input name="_method" type="hidden" value="post">
+                  <input name="_method" type="hidden" value="put">
                   <button class="btn btn-warning" type="submit">@lang('ui.edit')</button>
                 </form>
               </div>
