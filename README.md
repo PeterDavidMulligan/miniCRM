@@ -14,9 +14,11 @@
 
 - Change 'username' and 'password' in '/config/mail.php' to your own MailTrap details to receive automated emails. (Optional)
 
-- Open a command prompt in the directory you saved miniCRM into and type 'php artisan serve'.
+- Open a command prompt in the directory you saved miniCRM into and run 'php artisan migrate --seed'.
 
-- Goto [port 8000](http://127.0.0.1:8000) on your local host and you should be greeted with the log in screen.
+- In the command prompt, run 'php artisan serve'
+
+- Go to [port 8000](http://127.0.0.1:8000) on your local host and you should be greeted with the log in screen.
   Use the following details.
   - Email : admin@admin.com
   - Password : password
@@ -39,9 +41,9 @@ a one-to-many relationship between companies and employees.
 
 ## Usage
 
-Using the command prompt in the root folder, use the command 'php artisan migrate' to instantiate the database
-with the user, or 'php artisan migrate --seed' to populate the database with random companies and employees.
-Companies have a 1-to-many relationships with Employees.
+Using the command prompt in the root folder, use the command 'php artisan migrate --seed' to instantiate the database
+with the user and populate the database with random companies and employees. Companies have a 1-to-many relationships with
+Employees.
 
 Use the web app to view, add, edit, and delete employees and companies. Upon logging in, you will be greeted with
 a simple homepage. Clicking on the companies or employees link will bring you to the relevant index, where all the
