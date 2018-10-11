@@ -21,11 +21,12 @@ a one-to-many relationship between companies and employees.
 
 ## Features
  - Basic CRUD functionality
+ - Paginated results
  - Faker database seeding
  - Fully integrated for localization
- - Request Validation
- - Paginated results
-
+ - Request Validation on Models
+ - Automatic mail sending with MailTrap
+ 
 
 ## Usage
 
@@ -48,11 +49,11 @@ To view companies/employees, use '/{table}/{id}/{CRUD method}'. {id} can be omit
 
 *Examples :*
 
-*/employees/12/show*
+*localhost:8000/employees/12/show*
 
-*/companies/7/edit*
+*localhost:8000/companies/7/edit*
 
-*/employees/create*
+*localhost:8000/employees/create*
 
 
 # Tables
