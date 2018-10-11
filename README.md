@@ -14,7 +14,8 @@
 
 - Open a command prompt in the directory you saved miniCRM into and type 'php artisan serve'.
 
-- Goto [port 8000](http://127.0.0.1:8000) on your local host and you should be greeted with the home screen.
+- Goto [port 8000](http://127.0.0.1:8000) on your local host and you should be greeted with the log in screen.
+  Use the following details.
   - Email : admin@admin.com
   - Password : password
 
