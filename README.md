@@ -2,7 +2,8 @@
 
 ## Installation
 
-- Create a mysql database called 'miniCRM' on port 3306, with username 'root' and password left blank.
+- Create a mysql database with the following parameters :
+  - 'miniCRM' on port 3306, with username 'root' and password left blank.
 
 - Install Laravel 5.7. [Laravel Installation Guide](https://laravel.com/docs/5.7/installation)
 
