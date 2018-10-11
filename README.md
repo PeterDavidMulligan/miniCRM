@@ -38,11 +38,11 @@ To view companies/employees, use '/{table}/{id}/{CRUD method}'
 '/employees/12/show'
 
 # Tables
-companies
-employees
+- companies
+- employees
 
 # Methods
-show
-edit
-create
-delete
+- show
+- edit
+- create
+- delete
