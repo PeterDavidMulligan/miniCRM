@@ -12,7 +12,7 @@
 
 - Download or clone miniCRM.
 
-- Change 'username' and 'password' in '/config/mail.php' to your own MailTrap details to receive automated emails.
+- Change 'username' and 'password' in '/config/mail.php' to your own MailTrap details to receive automated emails. (Optional)
 
 - Open a command prompt in the directory you saved miniCRM into and type 'php artisan serve'.
 
@@ -45,7 +45,8 @@ Companies have a 1-to-many relationships with Employees.
 
 Use the web app to view, add, edit, and delete employees and companies. Upon logging in, you will be greeted with
 a simple homepage. Clicking on the companies or employees link will bring you to the relevant index, where all the
-rows in the current table are displayed, along with links to create, edit, and delete.
+rows in the current table are displayed, along with links to create, edit, and delete. There is a dropdown navbar
+in the top-right corner that you can use to go between home, companies, and employees, or to log out of the system.
 
 Note : Companies cannot be deleted if they have dependant employees.
 
@@ -60,13 +61,11 @@ To view companies/employees, use '/{table}/{id}/{CRUD method}'. {id} can be omit
 *localhost:8000/employees/create*
 
 
-# Tables
-- companies
-- employees
+# Routes
+- /companies
+- /employees
+  - /index
+  - /create
+  - /edit
+  - /delete
 
-
-# Methods
-- show
-- edit
-- create
-- delete
