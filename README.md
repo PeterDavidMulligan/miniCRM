@@ -29,17 +29,23 @@ a one-to-many relationship between companies and employees.
 Using the command prompt in the root folder, use the command 'php artisan migrate' to instantiate the database
 with the user, or 'php artisan migrate --seed' to populate the database with random companies and employees.
 
-# Email admin@admin.com
-# Password password
+ Email admin@admin.com
+ 
+ Password password
+
+
 
 To view companies/employees, use '/{table}/{id}/{CRUD method}'
 
-# Example
+Example
+
 '/employees/12/show'
+
 
 # Tables
 - companies
 - employees
+
 
 # Methods
 - show
