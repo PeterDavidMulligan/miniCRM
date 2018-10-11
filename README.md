@@ -33,13 +33,15 @@ Using the command prompt in the root folder, use the command 'php artisan migrat
 with the user, or 'php artisan migrate --seed' to populate the database with random companies and employees.
 Companies have a 1-to-many relationships with Employees.
 
-Use the web app to view, add, edit, and delete employees and companies. Companies cannot be deleted if they
-have dependant employees.
-
- Email : admin@admin.com
+ - Email : admin@admin.com
  
- Password : password
+ - Password : password
 
+Use the web app to view, add, edit, and delete employees and companies. Upon logging in, you will be greeted with
+a simple homepage. Clicking on the companies or employees link will bring you to the relevant index, where all the
+rows in the current table are displayed, along with links to create, edit, and delete.
+
+Note : Companies cannot be deleted if they have dependant employees.
 
 To view companies/employees, use '/{table}/{id}/{CRUD method}'. {id} can be omitted on certan actions.
 
