@@ -33,6 +33,7 @@ Using the command prompt in the root folder, use the command 'php artisan migrat
 with the user, or 'php artisan migrate --seed' to populate the database with random companies and employees.
 Companies have a 1-to-many relationships with Employees.
 
+
  - Email : admin@admin.com
  
  - Password : password
@@ -45,11 +46,13 @@ Note : Companies cannot be deleted if they have dependant employees.
 
 To view companies/employees, use '/{table}/{id}/{CRUD method}'. {id} can be omitted on certan actions.
 
-Examples
+*Examples :*
 
-'/employees/12/show'
-'/companies/7/edit'
-'/employees/create'
+*/employees/12/show*
+
+*/companies/7/edit*
+
+*/employees/create*
 
 
 # Tables
