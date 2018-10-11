@@ -68,7 +68,7 @@ class CompanyController extends Controller
         $company->save();
         $emailer = new EmailController;
         $emailer->sendMail();
-        return redirect('companies')->withErrors(Lang::get('ui.created'));
+        return redirect('companies')->withErrors(Lang::get('ui.company') . Lang::get('ui.created'));
     }
 
     /**
@@ -124,7 +124,7 @@ class CompanyController extends Controller
         ]);
         $company->save();
 
-        return redirect('companies')->withErrors(Lang::get('ui.edited'));
+        return redirect('companies')->withErrors(Lang::get('ui.company') . Lang::get('ui.edited'));
     }
 
     /**
@@ -141,6 +141,6 @@ class CompanyController extends Controller
           return redirect('companies')->withErrors(Lang::get('ui.depend'));
         }
         $company->delete();
-        return redirect('companies')->withErrors(Lang::get('ui.deleted'));
+        return redirect('companies')->withErrors(Lang::get('ui.company') . Lang::get('ui.deleted'));
     }
 }
