@@ -14,12 +14,13 @@
 
 - Change 'username' and 'password' in '/config/mail.php' to your own [MailTrap](https://mailtrap.io/) details to receive automated    emails. (Optional)
 
-- Open a command prompt in the directory you saved miniCRM into and run 'php artisan migrate --seed'.
+- Open a command prompt in the directory you saved miniCRM into and run 'php artisan migrate --seed' to create user and populate
+  the database.
 
-- In the command prompt, run 'php artisan serve'
+- In the command prompt, run 'php artisan serve' to run a local server.
 
 - Go to [port 8000](http://127.0.0.1:8000) on your local host and you should be greeted with the log in screen.
-  Use the following details.
+  Use the following details:
   - Email : admin@admin.com
   - Password : password
 
