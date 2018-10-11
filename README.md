@@ -67,6 +67,8 @@ To view companies/employees, use '/{table}/{id}/{CRUD method}'. {id} can be omit
 # Routes
 - /companies
 - /employees
+  - /{id}
+  - /{id}/show    *( does same as /{id} )*
   - /create
   - /{id}/edit
   - /{id}/delete
