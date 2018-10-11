@@ -31,18 +31,23 @@ a one-to-many relationship between companies and employees.
 
 Using the command prompt in the root folder, use the command 'php artisan migrate' to instantiate the database
 with the user, or 'php artisan migrate --seed' to populate the database with random companies and employees.
+Companies have a 1-to-many relationships with Employees.
+
+Use the web app to view, add, edit, and delete employees and companies. Companies cannot be deleted if they
+have dependant employees.
 
  Email : admin@admin.com
  
  Password : password
 
 
+To view companies/employees, use '/{table}/{id}/{CRUD method}'. {id} can be omitted on certan actions.
 
-To view companies/employees, use '/{table}/{id}/{CRUD method}'
-
-Example
+Examples
 
 '/employees/12/show'
+'/companies/7/edit'
+'/employees/create'
 
 
 # Tables
