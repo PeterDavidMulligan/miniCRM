@@ -11,6 +11,6 @@ class EmailController extends Controller
     {
       $user = Auth::user();
       \Mail::to($user)->send(new NewCompany);
-      return redirect()->home();
+      return redirect('companies');
     }
 }
